@@ -4,6 +4,7 @@ import { type Route } from './+types/index'
 
 export async function loader() {
 	const movies = await getMovies()
+
 	const moviesUI = movies.map((movie) => (
 		<Link
 			key={movie.id}
@@ -37,6 +38,7 @@ export async function loader() {
 
 export default function MoviesPage({ loaderData }: Route.ComponentProps) {
 	const { moviesUI } = loaderData
+
 	return (
 		<main className="bg-background movies-page min-h-screen">
 			<title>React Router RSC Movies</title>

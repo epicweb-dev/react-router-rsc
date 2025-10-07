@@ -3,6 +3,36 @@ import { getMovies } from '#app/movies-data.ts'
 
 export async function ServerComponent() {
 	const movies = await getMovies()
+
+	const moviesUI = movies.map((movie) => (
+		<Link
+			key={movie.id}
+			to={href('/:movieId', { movieId: String(movie.id) })}
+			className="rr-card transition-shadow hover:shadow-lg"
+		>
+			<div className="mb-4">
+				<img
+					src={movie.poster}
+					alt={`${movie.title} poster`}
+					className="mb-4 h-64 w-full rounded-lg object-cover"
+				/>
+				<h3 className="rr-heading text-lg font-semibold">{movie.title}</h3>
+				<p className="rr-text mb-2">Year: {movie.year}</p>
+				<p className="rr-text mb-2">Rating: {movie.rating}/10</p>
+				<p className="rr-text mb-4 text-sm text-gray-600">
+					{movie.description}
+				</p>
+				<div className="flex items-center gap-2">
+					<span
+						className={`rr-badge ${movie.isFavorite ? 'rr-badge-red' : ''}`}
+					>
+						{movie.isFavorite ? 'Favorite' : 'Not Favorite'}
+					</span>
+				</div>
+			</div>
+		</Link>
+	))
+
 	return (
 		<main className="bg-background movies-page min-h-screen">
 			<title>React Router RSC Movies</title>
@@ -17,36 +47,7 @@ export async function ServerComponent() {
 					</h1>
 
 					<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-						{movies.map((movie) => (
-							<Link
-								key={movie.id}
-								to={href('/:movieId', { movieId: String(movie.id) })}
-								className="rr-card transition-shadow hover:shadow-lg"
-							>
-								<div className="mb-4">
-									<img
-										src={movie.poster}
-										alt={`${movie.title} poster`}
-										className="mb-4 h-64 w-full rounded-lg object-cover"
-									/>
-									<h3 className="rr-heading text-lg font-semibold">
-										{movie.title}
-									</h3>
-									<p className="rr-text mb-2">Year: {movie.year}</p>
-									<p className="rr-text mb-2">Rating: {movie.rating}/10</p>
-									<p className="rr-text mb-4 text-sm text-gray-600">
-										{movie.description}
-									</p>
-									<div className="flex items-center gap-2">
-										<span
-											className={`rr-badge ${movie.isFavorite ? 'rr-badge-red' : ''}`}
-										>
-											{movie.isFavorite ? 'Favorite' : 'Not Favorite'}
-										</span>
-									</div>
-								</div>
-							</Link>
-						))}
+						{moviesUI}
 					</div>
 				</div>
 			</div>

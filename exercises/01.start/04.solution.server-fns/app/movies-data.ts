@@ -41,9 +41,9 @@ let movies = [
 		year: 2025,
 		isFavorite: true,
 		poster: 'https://image.tmdb.org/t/p/w500/22AouvwlhlXbe3nrFcjzL24bvWH.jpg',
-		youtubeId: 'dQw4w9WgXcQ', // Placeholder - this would be the actual trailer
+		youtubeId: 'dQw4w9WgXcQ',
 		description:
-			'An upcoming animated musical comedy about a group of K-pop idols who moonlight as demon hunters, saving the world one catchy song at a time.',
+			'An animated musical comedy about a group of K-pop idols who moonlight as demon hunters, saving the world one catchy song at a time.',
 		rating: 9.2,
 	},
 	{
