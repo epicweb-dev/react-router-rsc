@@ -1,3 +1,5 @@
+'use server'
+
 // Mock data for demonstration
 let movies = [
 	{
@@ -84,4 +86,17 @@ export async function getMovie(id: number) {
 		throw new Response('Movie not found', { status: 404 })
 	}
 	return movie
+}
+
+export async function setIsFavorite(formData: FormData) {
+	// Simulate API call delay
+	await new Promise((resolve) => setTimeout(resolve, 50))
+
+	const movieId = Number(formData.get('id'))
+	const isFavorite = formData.get('isFavorite') === 'true'
+	// Update the movie's favorite status
+	const movie = movies.find((m) => m.id === movieId)
+	if (movie) {
+		movie.isFavorite = isFavorite
+	}
 }

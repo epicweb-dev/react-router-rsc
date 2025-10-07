@@ -1,20 +1,10 @@
 import { href, Link } from 'react-router'
 import { getMovie } from '#app/movies-data.ts'
-import { type Route } from './+types/$movieId'
+import { type Route } from './+types/movie-details'
 
 export async function loader({ params }: Route.LoaderArgs) {
 	const movie = await getMovie(Number(params.movieId))
 	return { movie }
-}
-
-export function meta({ loaderData }: Route.MetaArgs) {
-	return [
-		{ title: `${loaderData.movie.title} - Demo 1` },
-		{
-			name: 'description',
-			content: loaderData.movie.description,
-		},
-	]
 }
 
 export default function MovieDetailsPage({ loaderData }: Route.ComponentProps) {
@@ -22,6 +12,8 @@ export default function MovieDetailsPage({ loaderData }: Route.ComponentProps) {
 
 	return (
 		<main className="bg-background movie-details-page min-h-screen">
+			<title>{movie.title}</title>
+			<meta name="description" content={movie.description} />
 			<div className="mx-auto max-w-4xl px-6 py-16">
 				<div className="mb-8">
 					<nav className="rr-text mb-6 text-sm">

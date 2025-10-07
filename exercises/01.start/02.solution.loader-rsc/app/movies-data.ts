@@ -1,5 +1,3 @@
-'use server'
-
 // Mock data for demonstration
 let movies = [
 	{
@@ -86,31 +84,4 @@ export async function getMovie(id: number) {
 		throw new Response('Movie not found', { status: 404 })
 	}
 	return movie
-}
-
-export async function toggleFavorite(prevState: any, formData: FormData) {
-	const movieId = Number(formData.get('id'))
-	const isFavorite = formData.get('isFavorite') === 'true'
-	const failureChance = Number(formData.get('failureChance')) || 0
-
-	// Simulate failure based on the failure chance
-	if (failureChance > 0 && Math.random() * 100 < failureChance) {
-		return {
-			success: false,
-			error: `Toggle operation failed! (${failureChance}% failure chance)`,
-			movieId,
-		}
-	}
-
-	// Update the movie's favorite status
-	const movie = movies.find((m) => m.id === movieId)
-	if (movie) {
-		movie.isFavorite = isFavorite
-	}
-
-	return {
-		success: true,
-		error: null,
-		movieId,
-	}
 }

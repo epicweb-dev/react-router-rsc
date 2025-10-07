@@ -3,14 +3,19 @@ import { getMovies } from '#app/movies-data.ts'
 import { type Route } from './+types/index'
 
 export async function loader() {
-	return {
-		movies: await getMovies(),
-	}
+	const movies = await getMovies()
+	return { movies }
 }
 
 export default function MoviesPage({ loaderData }: Route.ComponentProps) {
+	const { movies } = loaderData
 	return (
 		<main className="bg-background movies-page min-h-screen">
+			<title>React Router RSC Movies</title>
+			<meta
+				name="description"
+				content="Demo of React Server Components in React Router"
+			/>
 			<div className="mx-auto max-w-6xl px-6 py-16">
 				<div className="mx-auto max-w-4xl">
 					<h1 className="rr-heading mb-8 text-3xl font-bold">
@@ -18,7 +23,7 @@ export default function MoviesPage({ loaderData }: Route.ComponentProps) {
 					</h1>
 
 					<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-						{loaderData.movies.map((movie) => (
+						{movies.map((movie) => (
 							<Link
 								key={movie.id}
 								to={href('/:movieId', { movieId: String(movie.id) })}
@@ -51,14 +56,4 @@ export default function MoviesPage({ loaderData }: Route.ComponentProps) {
 			</div>
 		</main>
 	)
-}
-
-export function meta() {
-	return [
-		{ title: 'Basic React Router v7' },
-		{
-			name: 'description',
-			content: 'Basic React Router v7 with loaders and client-side navigation',
-		},
-	]
 }

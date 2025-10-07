@@ -1,14 +1,8 @@
 import { href, Link } from 'react-router'
 import { getMovies } from '#app/movies-data.ts'
-import { type Route } from './+types/index'
 
-export async function loader() {
+export async function ServerComponent() {
 	const movies = await getMovies()
-	return { movies }
-}
-
-export default function MoviesPage({ loaderData }: Route.ComponentProps) {
-	const { movies } = loaderData
 	return (
 		<main className="bg-background movies-page min-h-screen">
 			<title>React Router RSC Movies</title>
