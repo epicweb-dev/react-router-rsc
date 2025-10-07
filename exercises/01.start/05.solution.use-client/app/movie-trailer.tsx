@@ -5,7 +5,6 @@ import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import { type Movie } from '#app/movies-data.ts'
 
-// Client component for interactive trailer
 export function MovieTrailer({ movie }: { movie: Movie }) {
 	const [showTrailer, setShowTrailer] = React.useState(false)
 
