@@ -89,6 +89,9 @@ export async function getMovie(id: number) {
 }
 
 export async function setIsFavorite(formData: FormData) {
+	// Simulate API call delay
+	await new Promise((resolve) => setTimeout(resolve, 50))
+
 	const movieId = Number(formData.get('id'))
 	const isFavorite = formData.get('isFavorite') === 'true'
 	// Update the movie's favorite status

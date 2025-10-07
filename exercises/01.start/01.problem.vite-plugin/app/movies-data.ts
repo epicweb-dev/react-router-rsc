@@ -85,3 +85,20 @@ export async function getMovie(id: number) {
 	}
 	return movie
 }
+
+export async function setIsFavorite({
+	movieId,
+	isFavorite,
+}: {
+	movieId: number
+	isFavorite: boolean
+}) {
+	// Simulate API call delay
+	await new Promise((resolve) => setTimeout(resolve, 50))
+
+	// Update the movie's favorite status
+	const movie = movies.find((m) => m.id === movieId)
+	if (movie) {
+		movie.isFavorite = isFavorite
+	}
+}

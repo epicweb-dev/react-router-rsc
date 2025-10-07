@@ -1,4 +1,5 @@
 import { href, Link } from 'react-router'
+import { MovieTrailer } from '#app/movie-trailer.tsx'
 import { getMovie, setIsFavorite } from '#app/movies-data.ts'
 import { type Route } from './+types/movie-details'
 
@@ -55,6 +56,7 @@ export default function MovieDetailsPage({ loaderData }: Route.ComponentProps) {
 								</form>
 							</div>
 							<p className="rr-text mb-6">{movie.description}</p>
+							<MovieTrailer movie={movie} />
 						</div>
 					</div>
 				</div>
