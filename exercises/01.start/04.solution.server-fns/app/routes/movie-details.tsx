@@ -39,11 +39,7 @@ export default function MovieDetailsPage({ loaderData }: Route.ComponentProps) {
 							</h1>
 							<div className="mb-4 flex items-center gap-4">
 								<span className="rr-text text-lg">{movie.year}</span>
-								<span
-									className={`rr-badge ${movie.isFavorite ? 'rr-badge-red' : ''}`}
-								>
-									Rating: {movie.rating}/10
-								</span>
+								<span className="rr-badge">Rating: {movie.rating}/10</span>
 								<form action={setIsFavorite}>
 									<input type="hidden" name="id" value={movie.id} />
 									<input
