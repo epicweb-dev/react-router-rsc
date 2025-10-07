@@ -1,5 +1,3 @@
-'use server'
-
 // Mock data for demonstration
 let movies = [
 	{
@@ -88,12 +86,16 @@ export async function getMovie(id: number) {
 	return movie
 }
 
-export async function setIsFavorite(formData: FormData) {
+export async function setIsFavorite({
+	movieId,
+	isFavorite,
+}: {
+	movieId: number
+	isFavorite: boolean
+}) {
 	// Simulate API call delay
 	await new Promise((resolve) => setTimeout(resolve, 50))
 
-	const movieId = Number(formData.get('id'))
-	const isFavorite = formData.get('isFavorite') === 'true'
 	// Update the movie's favorite status
 	const movie = movies.find((m) => m.id === movieId)
 	if (movie) {

@@ -1,4 +1,4 @@
-import { href, Link } from 'react-router'
+import { Form, href, Link } from 'react-router'
 import { MovieTrailer } from '#app/movie-trailer.tsx'
 import { getMovie, setIsFavorite } from '#app/movies-data.ts'
 import { type Route } from './+types/movie-details'
@@ -6,6 +6,18 @@ import { type Route } from './+types/movie-details'
 export async function loader({ params }: Route.LoaderArgs) {
 	const movie = await getMovie(Number(params.movieId))
 	return { movie }
+}
+
+export async function action({ request }: Route.ActionArgs) {
+	// Simulate API call delay
+	await new Promise((resolve) => setTimeout(resolve, 50))
+	const formData = await request.formData()
+
+	const movieId = Number(formData.get('id'))
+	const isFavorite = formData.get('isFavorite') === 'true'
+	// Update the movie's favorite status
+	await setIsFavorite({ movieId, isFavorite })
+	return { success: true }
 }
 
 export default function MovieDetailsPage({ loaderData }: Route.ComponentProps) {
@@ -40,7 +52,7 @@ export default function MovieDetailsPage({ loaderData }: Route.ComponentProps) {
 							<div className="mb-4 flex items-center gap-4">
 								<span className="rr-text text-lg">{movie.year}</span>
 								<span className="rr-badge">Rating: {movie.rating}/10</span>
-								<form action={setIsFavorite}>
+								<Form method="post" preventScrollReset>
 									<input type="hidden" name="id" value={movie.id} />
 									<input
 										type="hidden"
@@ -53,7 +65,7 @@ export default function MovieDetailsPage({ loaderData }: Route.ComponentProps) {
 									>
 										{movie.isFavorite ? 'Favorite' : 'Not Favorite'}
 									</button>
-								</form>
+								</Form>
 							</div>
 							<p className="rr-text mb-6">{movie.description}</p>
 							<MovieTrailer movie={movie} />

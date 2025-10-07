@@ -14,10 +14,10 @@
       "path": "exercises/01.start/02.solution.loader-rsc"
     },
     {
-      "path": "exercises/01.start/03.solution.server-fns"
+      "path": "exercises/01.start/03.solution.rsc-route"
     },
     {
-      "path": "exercises/01.start/04.solution.rsc-route"
+      "path": "exercises/01.start/04.solution.server-fns"
     },
     {
       "path": "exercises/01.start/05.solution.use-client"
