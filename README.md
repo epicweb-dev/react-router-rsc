@@ -5,8 +5,9 @@
   </strong>
   <p>
     React Server Components have changed how we think about building React applications. In this lightning talk, Kent will explore how React Router is embracing RSC and what this means for the future of routing in React applications. This talk will dive into how RSC has simplified React Router's architecture and enables powerful new patterns for data loading, streaming, and code splitting.
-
-    We'll see how React Router has evolved to work seamlessly with React Server Components, making it easier than ever to build full-stack React applications with excellent performance and developer experience.
+    </p>
+    <p>
+      We'll see how React Router has evolved to work seamlessly with React Server Components, making it easier than ever to build full-stack React applications with excellent performance and developer experience.
   </p>
 </div>
 
