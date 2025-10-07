@@ -38,7 +38,9 @@ export async function ServerComponent() {
 										{movie.description}
 									</p>
 									<div className="flex items-center gap-2">
-										<span className="rr-badge">
+										<span
+											className={`rr-badge ${movie.isFavorite ? 'rr-badge-red' : ''}`}
+										>
 											{movie.isFavorite ? 'Favorite' : 'Not Favorite'}
 										</span>
 									</div>
