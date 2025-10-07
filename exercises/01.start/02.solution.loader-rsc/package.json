@@ -10,6 +10,7 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve build/server/index.js",
+    "postinstall": "npm run pretypecheck",
     "pretypecheck": "react-router typegen",
     "typecheck": "tsc"
   },
