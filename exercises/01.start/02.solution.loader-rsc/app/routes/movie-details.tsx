@@ -1,3 +1,4 @@
+import { ViewTransition } from 'react'
 import { Form, href, Link } from 'react-router'
 import { MovieTrailer } from '#app/movie-trailer.tsx'
 import { getMovie, setIsFavorite } from '#app/movies-data.ts'
@@ -30,40 +31,42 @@ export default function MovieDetailsPage({ loaderData }: Route.ComponentProps) {
 					</nav>
 				</div>
 
-				<div className="rr-card">
-					<div className="flex flex-col gap-6 md:flex-row">
-						<div className="md:w-1/3">
+				<div className="flex flex-col gap-6 md:flex-row">
+					<div className="md:w-1/3">
+						<ViewTransition name={`movie-poster-${movie.id}`}>
 							<img
 								src={movie.poster}
 								alt={`${movie.title} poster`}
 								className="h-96 w-full rounded-lg object-cover"
 							/>
-						</div>
-						<div className="md:w-2/3">
+						</ViewTransition>
+					</div>
+					<div className="md:w-2/3">
+						<ViewTransition name={`movie-title-${movie.id}`}>
 							<h1 className="rr-heading mb-4 text-3xl font-bold">
 								{movie.title}
 							</h1>
-							<div className="mb-4 flex items-center gap-4">
-								<span className="rr-text text-lg">{movie.year}</span>
-								<span className="rr-badge">Rating: {movie.rating}/10</span>
-								<Form method="post">
-									<input type="hidden" name="id" value={movie.id} />
-									<input
-										type="hidden"
-										name="isFavorite"
-										value={String(!movie.isFavorite)}
-									/>
-									<button
-										type="submit"
-										className={`rr-badge cursor-pointer ${movie.isFavorite ? 'rr-badge-red' : ''}`}
-									>
-										{movie.isFavorite ? 'Favorite' : 'Not Favorite'}
-									</button>
-								</Form>
-							</div>
-							<p className="rr-text mb-6">{movie.description}</p>
-							<MovieTrailer movie={movie} />
+						</ViewTransition>
+						<div className="mb-4 flex items-center gap-4">
+							<span className="rr-text text-lg">{movie.year}</span>
+							<span className="rr-badge">Rating: {movie.rating}/10</span>
+							<Form method="post">
+								<input type="hidden" name="id" value={movie.id} />
+								<input
+									type="hidden"
+									name="isFavorite"
+									value={String(!movie.isFavorite)}
+								/>
+								<button
+									type="submit"
+									className={`rr-badge cursor-pointer ${movie.isFavorite ? 'rr-badge-red' : ''}`}
+								>
+									{movie.isFavorite ? 'Favorite' : 'Not Favorite'}
+								</button>
+							</Form>
 						</div>
+						<p className="rr-text mb-6">{movie.description}</p>
+						<MovieTrailer movie={movie} />
 					</div>
 				</div>
 			</div>
