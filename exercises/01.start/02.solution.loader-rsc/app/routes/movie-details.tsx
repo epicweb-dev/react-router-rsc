@@ -9,14 +9,8 @@ export async function loader({ params }: Route.LoaderArgs) {
 }
 
 export async function action({ request }: Route.ActionArgs) {
-	// Simulate API call delay
-	await new Promise((resolve) => setTimeout(resolve, 50))
 	const formData = await request.formData()
-
-	const movieId = Number(formData.get('id'))
-	const isFavorite = formData.get('isFavorite') === 'true'
-	// Update the movie's favorite status
-	await setIsFavorite({ movieId, isFavorite })
+	await setIsFavorite(formData)
 	return { success: true }
 }
 

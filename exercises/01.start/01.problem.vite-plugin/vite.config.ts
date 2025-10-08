@@ -13,8 +13,11 @@ export default defineConfig({
 	plugins: [
 		tailwindcss(),
 		tsconfigPaths(),
-		// here we go...
+		// 💣 replace this:
 		reactRouter(),
+		// 🐨 with this:
+		// reactRouterRSC(),
+		// rsc(),
 		devtoolsJson(),
 	],
 })
