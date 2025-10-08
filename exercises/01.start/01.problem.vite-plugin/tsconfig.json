@@ -2,7 +2,7 @@
 	"include": ["**/*.ts", "**/*.tsx", "./.react-router/types/**/*", "**/*.d.ts"],
 	"extends": ["@epic-web/config/typescript"],
 	"compilerOptions": {
-		"types": ["vite/client", "@vitejs/plugin-rsc/types"],
+		"types": ["vite/client", "@vitejs/plugin-rsc/types", "react/canary"],
 		"rootDirs": [".", "./.react-router/types"],
 		"baseUrl": "."
 	}

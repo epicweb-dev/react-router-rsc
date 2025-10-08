@@ -16,7 +16,7 @@ export default function MoviesPage({ loaderData }: Route.ComponentProps) {
 	const { moviesUI } = loaderData
 
 	return (
-		<main className="bg-background movies-page min-h-screen">
+		<main className="bg-background min-h-screen">
 			<title>React Router RSC Movies</title>
 			<meta
 				name="description"

@@ -18,7 +18,7 @@ export default function MovieDetailsPage({ loaderData }: Route.ComponentProps) {
 	const { movie } = loaderData
 
 	return (
-		<main className="bg-background movie-details-page min-h-screen">
+		<main className="bg-background min-h-screen">
 			<title>{movie.title}</title>
 			<meta name="description" content={movie.description} />
 			<div className="mx-auto max-w-4xl px-6 py-16">

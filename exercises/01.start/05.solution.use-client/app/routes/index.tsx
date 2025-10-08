@@ -1,7 +1,7 @@
 import { MovieCard } from '#app/movie-card.tsx'
 import { getMovies } from '#app/movies-data.ts'
 
-export async function SeverComponent() {
+export async function ServerComponent() {
 	const movies = await getMovies()
 
 	const moviesUI = movies.map((movie) => (
@@ -9,7 +9,7 @@ export async function SeverComponent() {
 	))
 
 	return (
-		<main className="bg-background movies-page min-h-screen">
+		<main className="bg-background min-h-screen">
 			<title>React Router RSC Movies</title>
 			<meta
 				name="description"
