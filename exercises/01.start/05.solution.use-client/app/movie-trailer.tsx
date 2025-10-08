@@ -1,8 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import LiteYouTubeEmbed from 'react-lite-youtube-embed'
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
+import { Activity, useState } from 'react'
 import { type Movie } from '#app/movies-data.ts'
 
 export function MovieTrailer({ movie }: { movie: Movie }) {
@@ -16,16 +14,18 @@ export function MovieTrailer({ movie }: { movie: Movie }) {
 			>
 				{showTrailer ? 'Hide Trailer' : 'Watch Trailer'}
 			</button>
-			{showTrailer && (
+			<Activity mode={showTrailer ? 'visible' : 'hidden'}>
 				<div className="overflow-hidden rounded-lg">
-					<LiteYouTubeEmbed
-						id={movie.youtubeId}
+					<video
+						src={movie.videoUrl}
 						title={movie.title}
-						params="autoplay=1&mute=0&rel=0&modestbranding=1"
-						alwaysLoadIframe={true}
+						autoPlay
+						muted
+						loop
+						controls
 					/>
 				</div>
-			)}
+			</Activity>
 		</div>
 	)
 }

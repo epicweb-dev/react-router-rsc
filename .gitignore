@@ -10,6 +10,10 @@ data.db
 **/tsconfig.tsbuildinfo
 **/dist
 
+# Movie assets copied during setup
+exercises/**/public/posters/
+exercises/**/public/videos/
+
 # in a real app you'd want to not commit the .env
 # file as well, but since this is for a workshop
 # we're going to keep them around.
