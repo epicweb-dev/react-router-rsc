@@ -1,12 +1,12 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import { type Movie } from '#app/movies-data.ts'
 
 export function MovieTrailer({ movie }: { movie: Movie }) {
-	const [showTrailer, setShowTrailer] = React.useState(false)
+	const [showTrailer, setShowTrailer] = useState(false)
 
 	return (
 		<div className="mb-6">
