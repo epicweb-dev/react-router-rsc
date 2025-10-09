@@ -1,10 +1,11 @@
 'use client'
 
-import { Activity, useState } from 'react'
+import { Activity, useEffect, useState } from 'react'
 import { type Movie } from '#app/movies-data.ts'
 
 export function MovieTrailer({ movie }: { movie: Movie }) {
 	const [showTrailer, setShowTrailer] = useState(false)
+	useAutoplay(showTrailer)
 
 	return (
 		<div className="mb-6">
@@ -20,7 +21,6 @@ export function MovieTrailer({ movie }: { movie: Movie }) {
 						src={movie.videoUrl}
 						title={movie.title}
 						autoPlay
-						muted
 						loop
 						controls
 					/>
@@ -28,4 +28,21 @@ export function MovieTrailer({ movie }: { movie: Movie }) {
 			</Activity>
 		</div>
 	)
+}
+
+function useAutoplay(showTrailer: boolean) {
+	useEffect(() => {
+		const video = document.querySelector('video')
+		if (!(video instanceof HTMLVideoElement)) return
+		if (!showTrailer) {
+			void video.pause()
+			return
+		}
+
+		video.volume = 1
+		void video.play()
+		return () => {
+			void video.pause()
+		}
+	}, [showTrailer])
 }
