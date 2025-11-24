@@ -3,6 +3,7 @@ import {
 	Links,
 	Meta,
 	Outlet,
+	// 💣 remove this Scripts import
 	Scripts,
 	ScrollRestoration,
 } from 'react-router'
@@ -35,6 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			<body>
 				{children}
 				<ScrollRestoration />
+				{/* 💣 remove this Scripts element */}
 				<Scripts />
 			</body>
 		</html>
