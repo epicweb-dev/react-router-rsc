@@ -20,9 +20,9 @@ export function MovieTrailer({ movie }: { movie: Movie }) {
 					<video
 						src={movie.videoUrl}
 						title={movie.title}
-						autoPlay
 						loop
 						controls
+						preload="auto"
 					/>
 				</div>
 			</Activity>
