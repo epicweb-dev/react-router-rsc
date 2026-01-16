@@ -33,11 +33,11 @@ jobs:
 
       - name: ʦ TypeScript
         run: npm run typecheck
-        working-directory: ./workshop
+        working-directory: ./workshop/${{ github.event.repository.name }}
 
       - name: ⬣ ESLint
         run: npm run lint
-        working-directory: ./workshop
+        working-directory: ./workshop/${{ github.event.repository.name }}
 
   # tests:
   #   name: 🧪 Test
